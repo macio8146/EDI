@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <title>EDI - Final Group Project</title>
+</head>
+<body>
+    <header>
+        <h1> EDI - Final Group Project</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html"><b>Home</b></a></li>
+                <li><a href="linechart.html">Line Chart</a></li>
+                <li><a href="barchart.html">Bar Chart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="bar-container">  
+            <canvas id="mybarChart" style="width:800px;height:400px;"></canvas>
+        </div>
+
+    </main>
+        <script>
+
+            var dane = new Object();
+            var parsedDane = new Object();
+			var req = new XMLHttpRequest();
+            req.open("GET", "https://my.api.mockaroo.com/api3.json?key=d05ba790");
+            req.send();
+            
+            setTimeout(() => {
+                createChart();
+            }, 1000);
+			
+            function createChart() {
+			
+				dane = req.responseText;
+                parsedDane = JSON.parse(dane);
+
+                var CarPrice1 = parsedDane[1]["Price 2022"].toString();
+                var CarPriceValue1 = parseFloat(CarPrice1.substr(1), 100000);
+                var CarModel1 = parsedDane[1]["Car model"];
+
+                var CarPrice2 = parsedDane[2]["Price 2022"].toString();
+                var CarPriceValue2 = parseFloat(CarPrice2.substr(1), 10000);
+                var CarModel2 = parsedDane[2]["Car model"].toString();
+    
+                var CarPrice3 = parsedDane[3]["Price 2022"].toString();
+                var CarPriceValue3 = parseFloat(CarPrice3.substr(1), 10000);
+                var CarModel3 = parsedDane[3]["Car model"].toString();
+
+                var CarPrice4 = parsedDane[4]["Price 2022"].toString();
+                var CarPriceValue4 = parseFloat(CarPrice4.substr(1), 10000);
+                var CarModel4 = parsedDane[4]["Car model"].toString();
+
+                var CarPrice5 = parsedDane[5]["Price 2022"].toString();
+                var CarPriceValue5 = parseFloat(CarPrice5.substr(1), 10000);
+                var CarModel5 = parsedDane[5]["Car model"].toString();
+
+            
+                const labels = [
+                    CarModel1,
+ 	                CarModel2,
+                    CarModel3,
+                    CarModel4,		    
+                    CarModel5,
+    
+                ];
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Car model prices in 2022',
+                        data: [
+                            CarPriceValue1,
+                            CarPriceValue2,
+                            CarPriceValue3,
+                            CarPriceValue4,
+                            CarPriceValue5,
+
+                        ],
+                        backgroundColor: [
+                            'rgba(225, 0, 127, 0.2)',
+                            'rgba(225, 0, 127, 0.2)',
+                            'rgba(225, 0, 127, 0.2)',
+                            'rgba(225, 0, 127, 0.2)',
+                            'rgba(225, 0, 127, 0.2)'
+                    
+                        ],
+ 
+                    }],
+                };
+
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                    },
+                };
+    
+                const myChart = new Chart(
+				document.getElementById('mybarChart'), 
+				config
+				);
+
+            }
+    
+        </script>
+</body>
+    <footer>
+
+    </footer>
+
+</html>
