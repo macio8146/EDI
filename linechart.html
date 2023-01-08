@@ -40,12 +40,12 @@
             <th>Car make</th>
             <th>Car model</th>
             <th>Year</th>
-            <th>Price in 2022</th>
-            <th>Price in 2021</th>
-            <th>Price in 2020</th>
-            <th>Price in 2019</th>
-            <th>Price in 2018</th>
             <th>Price in 2017</th>
+            <th>Price in 2018</th>
+            <th>Price in 2019</th>
+            <th>Price in 2020</th>
+            <th>Price in 2021</th>
+            <th>Price in 2022</th>
         </tr>
     </table>
 <footer>
@@ -94,7 +94,7 @@
 
     function loadData() {
         const request = new XMLHttpRequest();
-        request.open("GET", "https://my.api.mockaroo.com/api3.json?key=d05ba790", true);
+        request.open("GET", "https://my.api.mockaroo.com/Api3.json?key=b3b2fd80", true);
         request.onload = () => {
             try {
                 const json = JSON.parse(request.responseText);

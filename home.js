@@ -2,7 +2,7 @@ const testBody = document.querySelector("#tabela"); // returns the first Element
 
 function loadData(){
     const request = new XMLHttpRequest();  // creating request
-    request.open("GET", "https://my.api.mockaroo.com/API.json?key=255e4db0", true); // request from api
+    request.open("GET", "https://my.api.mockaroo.com/Api3.json?key=b3b2fd80", true); // request from api
     request.onload = () =>{ // run once page completly loaded all contents
         try{
             const json = JSON.parse(request.responseText); // text from server converted to js object 

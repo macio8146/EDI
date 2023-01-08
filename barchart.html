@@ -30,12 +30,16 @@
             var dane = new Object();
             var parsedDane = new Object();
 			var req = new XMLHttpRequest();
-            req.open("GET", "https://my.api.mockaroo.com/api3.json?key=d05ba790");
+            req.open("GET", "https://my.api.mockaroo.com/Api3.json?key=b3b2fd80");
             req.send();
             
-            setTimeout(() => {
-                createChart();
-            }, 1000);
+            req.onload = () =>{
+                try{
+                    createChart();
+                }catch(e){
+                    console.warn("error")
+                }
+            }
 			
             function createChart() {
 			
